@@ -9,28 +9,22 @@ public class Deck {
 	private ArrayList<Card> cards;
 	
 	public Deck(){
-		//Create a new deck of playing cards
 		this.cards = new ArrayList<Card>();
 	
 	}
 	
 	//Add 52 playing cards to a deck
 	public void createFullDeck(){
-		//Generate Cards
 		for(Suit cardSuit : Suit.values()){
-			//Loop through Values
 			for(Value cardValue : Value.values()){
-				//Add new card to the mix
 				this.cards.add(new Card(cardSuit,cardValue));
 			}
 		}
 	}
 	
 	
-//Shuffle deck of cards
 public void shuffle(){
 	ArrayList<Card> tempDeck = new ArrayList<Card>();
-	//Randomly pick from the old deck and copy values to the new deck
 	Random random = new Random();
 	int randomCardIndex = 0;
 	int originalSize = this.cards.size();
@@ -47,25 +41,20 @@ public void shuffle(){
 }
 	
 	
-	//Remove a card from the deck
 	public void removeCard(int i){
 		this.cards.remove(i);
 	}
-	//Get card from deck
+
 	public Card getCard(int i){
 		return this.cards.get(i);
 	}
 	
-	//Add card to deck
 	public void addCard(Card addCard){
 		this.cards.add(addCard);
 	}
 	
-	//Draw a top card from deck
 	public void draw(Deck decksCards){
-		//Add card to this deck from whatever deck its coming from
 		this.cards.add(decksCards.getCard(0));
-		//Remove the card in the deck its coming from
 		decksCards.removeCard(0);
 	}
 	
@@ -75,7 +64,7 @@ public void shuffle(){
 	}
 	
 	//Calculate the value of deck
-	public int cardsValue(){
+	public int cardNum(){
 		int totalValue = 0;
 		int aces = 0;
 		//For every card in the deck
@@ -98,7 +87,7 @@ public void shuffle(){
 			}			
 		}
 		
-		//Aces criteria
+		//Aces value
 		for(int i = 0; i < aces; i++){
 			if (totalValue > 10){
 				totalValue += 1;
@@ -112,15 +101,14 @@ public void shuffle(){
 		return totalValue;
 	
 	}
-	//Use to print out deck
 		public String toString(){
-			String cardListOutput = "";
+			String cardStringt = "";
 			int i = 0;
 			for(Card aCard : this.cards){
-				cardListOutput += "\n" + aCard.toString();
+				cardStringt += "\n" + aCard.toString();
 				i++;
 			}
-			return cardListOutput;
+			return cardStringt;
 		}
 	
 	
